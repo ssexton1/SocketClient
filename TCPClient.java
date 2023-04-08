@@ -26,16 +26,31 @@ public class TCPClient {
         try {
             Socket socket = new Socket(host, port);
             logger.log(Level.INFO, "Socket created");
+            OutputStream out = socket.getOutputStream();
+            logger.log(Level.INFO, "Output stream created");
+            
+            if (args.length > 2) {
+      
+               String msg = "";
+              
+               for (int i = 2; i < args.length; i++) {
+                  if (!args[i].substring(0, 2).equals("--")) {
+                        msg += " " + args[i];
+                  }
+               }
+               msg += "\n";
+               out.write(msg.getBytes());
+               logger.log(Level.INFO, "Data sent to server", msg);
+             }      
+
 
             // Create a new thread for command-line I/O
             Thread cliThread = new Thread(() -> {
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
                     String line;
+                    
                     while ((line = in.readLine()) != null) {
-                        OutputStream out = socket.getOutputStream();
-                        logger.log(Level.INFO, "Output stream created");
-
                         out.write((line + "\n").getBytes());
                         logger.log(Level.INFO, "Data sent to server", line);
                     }
@@ -46,18 +61,18 @@ public class TCPClient {
             cliThread.start();
             logger.log(Level.FINE, "Thread started");
 
-            InputStream in = socket.getInputStream();
+            InputStream inputStream = socket.getInputStream();
             logger.log(Level.INFO, "Input stream created");
 
             // Modify the existing thread to handle socket I/O
-            int nextByte = in.read();
+            int nextByte = inputStream.read();
             logger.log(Level.FINE, "Read first byte");
 
             while (nextByte != -1) {
                 System.out.write(nextByte);
                 logger.log(Level.FINER, "Write byte");
 
-                nextByte = in.read();
+                nextByte = inputStream.read();
                 logger.log(Level.FINEST, "Read byte");
             }
             socket.close();
@@ -65,6 +80,6 @@ public class TCPClient {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
+        
     }
 }
