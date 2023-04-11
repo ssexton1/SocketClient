@@ -5,4 +5,4 @@ SocketClient is a simple Python module that provides a TCP/IP socket client for 
 Socket client can:
   - Send user input to a server
   - Receive responses from the server
-  - Configure logging levels for how much information about the socket connect the user would like to see
+  - Configure logging levels for how much information about the socket connection the user would like to see
