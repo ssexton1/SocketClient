@@ -1,6 +1,6 @@
 # Logging Functionality
 
-## Host: djxmmx.net Port: 17 --loglevel=INFO
+## Host: ```djxmmx.net``` Port: ```17``` Log Level: ```--loglevel=INFO```
 
 ```
 (base) MacBook-Pro-8 Info314 % java TCPClient djxmmx.net 17 --loglevel=INFO
@@ -19,7 +19,7 @@ Apr 10, 2023 4:48:59 PM TCPClient main
 INFO: Exiting program
 ```
 
-## Host: djxmmx.net Port: 17 --loglevel=ALL
+## Host: ```djxmmx.net``` Port: ```17``` Log Level: ```--loglevel=ALL```
 
 ```
 (base) MacBook-Pro-8 Info314 % java TCPClient djxmmx.net 17 --loglevel=ALL 
@@ -39,7 +39,7 @@ Apr 10, 2023 4:49:12 PM TCPClient main
 INFO: Exiting program
 ```
 
-## Host: djxmmx.net Port: 17 --loglevel=OFF
+## Host: ```djxmmx.net``` Port: ```17``` Log Level: ```--loglevel=OFF```
 
 ```
 (base) MacBook-Pro-8 Info314 % java TCPClient djxmmx.net 17 --loglevel=OFF
@@ -49,7 +49,7 @@ INFO: Exiting program
  I've been crawling in the dark, looking for the answer..."
 ```
 
-## Host: tcpbin.com Port: 17 --loglevel=ALL
+## Host: ```tcpbin.com``` Port: ```17``` Log Level: ```--loglevel=ALL```
 
 ```
 (base) MacBook-Pro-8 Info314 % java TCPClient tcpbin.com 4242 one two three --loglevel=ALL
